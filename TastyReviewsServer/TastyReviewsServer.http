@@ -1,0 +1,6 @@
+@TastyReviewsServer_HostAddress = http://localhost:5275
+
+GET {{TastyReviewsServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

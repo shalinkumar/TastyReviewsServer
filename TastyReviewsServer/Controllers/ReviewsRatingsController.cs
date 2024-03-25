@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TastyReviewsServer.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewsRatingsController : ControllerBase

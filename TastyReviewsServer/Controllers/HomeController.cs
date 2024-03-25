@@ -2,7 +2,6 @@
 using AutoMapper;
 using Contracts;
 using Infrastructure.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TastyReviewsServer.Model;
 

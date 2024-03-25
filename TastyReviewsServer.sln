@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastyReviewsServer", "TastyReviewsServer\TastyReviewsServer.csproj", "{37C31411-7D3A-4DA8-B8EA-B230B57DE73D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyReviewsServer", "TastyReviewsServer\TastyReviewsServer.csproj", "{37C31411-7D3A-4DA8-B8EA-B230B57DE73D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{89B761DD-2877-4C08-960E-7D33ABCE34CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C7650242-116C-44AA-8F89-5A1C20CBFB82}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyReviewServer.UnitTests", "TastyReviewServer.UnitTests\TastyReviewServer.UnitTests.csproj", "{48E889D0-2391-4C68-BDE2-F3281350F23B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{7A44333F-A3BB-43E2-A661-8170A85F4A48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{A9D7A48F-07B4-4C08-9FC4-DDC389385B9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,28 @@ Global
 		{37C31411-7D3A-4DA8-B8EA-B230B57DE73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C31411-7D3A-4DA8-B8EA-B230B57DE73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C31411-7D3A-4DA8-B8EA-B230B57DE73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B761DD-2877-4C08-960E-7D33ABCE34CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B761DD-2877-4C08-960E-7D33ABCE34CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B761DD-2877-4C08-960E-7D33ABCE34CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B761DD-2877-4C08-960E-7D33ABCE34CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E889D0-2391-4C68-BDE2-F3281350F23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E889D0-2391-4C68-BDE2-F3281350F23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E889D0-2391-4C68-BDE2-F3281350F23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E889D0-2391-4C68-BDE2-F3281350F23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A44333F-A3BB-43E2-A661-8170A85F4A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A44333F-A3BB-43E2-A661-8170A85F4A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A44333F-A3BB-43E2-A661-8170A85F4A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A44333F-A3BB-43E2-A661-8170A85F4A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D7A48F-07B4-4C08-9FC4-DDC389385B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D7A48F-07B4-4C08-9FC4-DDC389385B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D7A48F-07B4-4C08-9FC4-DDC389385B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D7A48F-07B4-4C08-9FC4-DDC389385B9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{48E889D0-2391-4C68-BDE2-F3281350F23B} = {C7650242-116C-44AA-8F89-5A1C20CBFB82}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE503954-3825-4C67-B0F3-D79A8C1D85EE}

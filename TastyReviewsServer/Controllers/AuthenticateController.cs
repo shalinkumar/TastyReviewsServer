@@ -121,8 +121,7 @@ namespace TastyReviewsServer.Controllers
         {
             var userExists = _userManager.FindByNameAsync(model.UserName).ConfigureAwait(false).GetAwaiter().GetResult();
             if (userExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseModel { Status = "Error", Message = "User already exists!" });
-
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseModel { Status = "Error", Message = "User already exists!" })
 
             var user = _mapper.Map<ApplicationUser>(model);
             user.SecurityStamp = Guid.NewGuid().ToString();

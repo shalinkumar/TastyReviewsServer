@@ -20,7 +20,6 @@ namespace TastyReviewsServer.Controllers
         private readonly IConfiguration _configuration = configuration;
         private IMapper? _mapper = mapper;
 
-
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
@@ -30,6 +29,7 @@ namespace TastyReviewsServer.Controllers
             if (user != null && await _userManager.HasPasswordAsync(user))
             {
                 var userRoles =  _userManager.GetRolesAsync(user).ConfigureAwait(false).GetAwaiter().GetResult();
+                var role = userRoles.FirstOrDefault();
 
                 var authClaims = new List<Claim>
                 {
@@ -57,7 +57,8 @@ namespace TastyReviewsServer.Controllers
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    expiration = token.ValidTo,
+                    role = userRoles.FirstOrDefault()
                 });
 
             }
@@ -73,14 +74,7 @@ namespace TastyReviewsServer.Controllers
                 return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status500InternalServerError, new ResponseModel { Status = "Error", Message = "User already exists!" }));
 
             var user = _mapper.Map<ApplicationUser>(model);
-
-            //ApplicationUser user = new ApplicationUser
-            //{
-            //    Email = model.Email,
-            //    SecurityStamp = Guid.NewGuid().ToString(),
-            //    UserName = model.UserName,
-            //    EmailConfirmed = true
-            //};
+            
             user.PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(user, model.Password);
             
             var result = _userManager.CreateAsync(user).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -99,13 +93,9 @@ namespace TastyReviewsServer.Controllers
             var userExists =  _userManager.FindByNameAsync(model.UserName).ConfigureAwait(false).GetAwaiter().GetResult();
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new ResponseModel { Status = "Error", Message = "User already exists!" });
-
-            ApplicationUser user = new ApplicationUser()
-            {
-                Email = model.Email,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.UserName
-            };
+            
+            var user = _mapper.Map<ApplicationUser>(model);
+            user.SecurityStamp = Guid.NewGuid().ToString();
             user.PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(user, model.Password);
 
             var result =  _userManager.CreateAsync(user).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -133,12 +123,9 @@ namespace TastyReviewsServer.Controllers
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new ResponseModel { Status = "Error", Message = "User already exists!" });
 
-            ApplicationUser user = new ApplicationUser()
-            {
-                Email = model.Email,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.UserName
-            };
+
+            var user = _mapper.Map<ApplicationUser>(model);
+            user.SecurityStamp = Guid.NewGuid().ToString();
             user.PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(user, model.Password);
 
             var result = _userManager.CreateAsync(user).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -152,8 +139,7 @@ namespace TastyReviewsServer.Controllers
             {
                 _userManager.AddToRoleAsync(user, UserRoles.Owner).ConfigureAwait(false).GetAwaiter().GetResult();
             }
-            return StatusCode(StatusCodes.Status200OK, new ResponseModel { Status = "Success", Message = "User created." });
-            //return Ok(new ResponseModel { Status = "Success", Message = "User created successfully!" });
+            return StatusCode(StatusCodes.Status200OK, new ResponseModel { Status = "Success", Message = "User created." });            
         }
 
     }

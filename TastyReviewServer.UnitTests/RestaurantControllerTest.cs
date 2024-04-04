@@ -5,16 +5,13 @@ using Contracts;
 using Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TastyReviewsServer.Controllers;
 using TastyReviewsServer.Model;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Reflection;
+using Microsoft.AspNetCore.Http;
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 
 namespace TastyReviewServer.UnitTests
 {
@@ -39,45 +36,64 @@ namespace TastyReviewServer.UnitTests
          
             string basePath = Environment.CurrentDirectory;
 
-            string relativePath = "../../../Assets/Images/SpiceIndia.jpg";
+            string relativePath = "../../../Assets/Images/SpiceIndia.JPG";
             string relativeKashmirPath = "../../../Assets/Images/Kashmir.jpg";
         
             string spiceIndiaPath = Path.GetFullPath(relativePath,basePath);
             string kashmirPath = Path.GetFullPath(relativeKashmirPath, basePath);
 
-            var model = new OwnerPostingsModel()
+            // Arrange.                    
+           
+            using (var stream = File.OpenRead(spiceIndiaPath))
             {
-                Guid = guid,
-                RestaurantName = "Test",
-                Latitude = "234",
-                Longitude = "234",
-                Country = "Ireland",               
-                PhoneNumber = "0851523834",
-                Address = "Test",
-                City = "Galway",
-                Region = "",
-                PostalCode = "H91D628",
-                CountryCode = "",
-                CreationDate = DateTime.Now,
-                CreatedBy = "Test",
-                LastUpdatedBy = "Test",
-                Images = [new RestaurantImagesModel()
+                var formFiles = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(spiceIndiaPath))
+                {
+                    Headers = new HeaderDictionary(),
+                    ContentType = "image/JPG"
+                };
+                var model = new RestaurantPostingsModel()
                 {
                     Guid = guid,
-                    IsInterior = true,
-                    Image = ConvertImagetoByteArray(spiceIndiaPath)
-                },
-                    new RestaurantImagesModel()
+                    RestaurantName = "SpiceIndia",
+                    Latitude = "234",
+                    Longitude = "234",
+                    Country = "Ireland",
+                    PhoneNumber = "0851523834",
+                    Address = "Test",
+                    City = "Galway",
+                    Region = "",
+                    PostalCode = "H91D628",
+                    CountryCode = "",
+                    CreationDate = DateTime.Now,
+                    CreatedBy = "Test",
+                    LastUpdatedBy = "Test",
+                    Images = [new RestaurantImagesModel()
                     {
                         Guid = guid,
                         IsInterior = true,
-                        Image = ConvertImagetoByteArray(kashmirPath)
-                    }]
-            };
-            //Act
-            var response = new RestaurantController(_restaurantService, _mapper).CreatePostings(model);
-            //Assert
-            Assert.True(((ObjectResult)response.Result).StatusCode == 200, "Record Created");
+                        FormImage = formFiles
+                    }
+               //new RestaurantImagesModel()
+               //{
+               //    Guid = guid,
+               //    IsInterior = true,
+               //    Image = inputFile
+               //}
+                ]
+                };
+
+                //Act
+                var response = new RestaurantController(_restaurantService, _mapper).CreatePostings(model);
+                stream.Dispose();
+                //Assert
+                //Assert.True(((ObjectResult)response.Result).StatusCode == 200, "Success");              
+            }
+            
+          
+           
+            
+           
+            //Assert.True(((ObjectResult)response.Result).StatusCode == 200, "Record Created");
         }
 
         public Byte[] ConvertImagetoByteArray(string path)

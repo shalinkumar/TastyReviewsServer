@@ -1,6 +1,6 @@
 ﻿namespace TastyReviewsServer.Model
 {
-    public class OwnerPostingsModel
+    public class RestaurantPostingsModel
     {
         public int Id { get; set; }
         public Guid Guid { get; set; }

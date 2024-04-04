@@ -9,8 +9,8 @@ namespace TastyReviewsServer.Automapper
     {
         public AutoMapperProfileConfiguration() {
             CreateMap<RegisterModel, ApplicationUser>();
-            CreateMap<OwnerPostingsModel, RestaurantModel>();
-            CreateMap<RestaurantModel, OwnerPostingsModel>();
+            CreateMap<RestaurantPostingsModel, RestaurantModel>();
+            CreateMap<RestaurantModel, RestaurantPostingsModel>();
             CreateMap<RestaurantImages, RestaurantImagesModel>();
             CreateMap<RestaurantImagesModel, RestaurantImages>();
         }

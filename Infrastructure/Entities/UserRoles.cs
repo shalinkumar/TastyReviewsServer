@@ -10,6 +10,6 @@ namespace Infrastructure.Entities
     {
         public const string Admin = "admin";
         public const string User = "user";
-        public const string Owner = "ownerUser";
+        public const string Owner = "owner-user";
     }
 }

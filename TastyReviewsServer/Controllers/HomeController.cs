@@ -14,12 +14,13 @@ namespace TastyReviewsServer.Controllers
         private IRestaurantService _restaurantService = restaurantService;
         private IMapper _mapper = mapper;
 
+        
         [HttpGet]
         public Task<IActionResult> GetAllRestaurant()
         {
             var response = _restaurantService.GetAllRestaurant();
-            var restaurants = _mapper.Map<IEnumerable<RestaurantModel>, IEnumerable<OwnerPostingsModel>>(response);
+            var restaurants = _mapper.Map<IEnumerable<RestaurantModel>, IEnumerable<RestaurantPostingsModel>>(response);
             return Task.FromResult<IActionResult>(Ok(restaurants));
-        }
+        }        
     }
 }

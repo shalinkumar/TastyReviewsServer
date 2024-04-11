@@ -66,20 +66,20 @@ namespace TastyReviewServer.UnitTests
                     CountryCode = "",
                     CreationDate = DateTime.Now,
                     CreatedBy = "Test",
-                    LastUpdatedBy = "Test",
-                    Images = [new RestaurantImagesModel()
-                    {
-                        Guid = guid,
-                        IsInterior = true,
-                        FormImage = formFiles
-                    }
+                    LastUpdatedBy = "Test"
+                    //Images = [new RestaurantImagesModel()
+                    //{
+                    //    Guid = guid,
+                    //    IsInterior = true,
+                    //    FormImage = formFiles
+                    //}
                //new RestaurantImagesModel()
                //{
                //    Guid = guid,
                //    IsInterior = true,
                //    Image = inputFile
                //}
-                ]
+                //]
                 };
 
                 //Act

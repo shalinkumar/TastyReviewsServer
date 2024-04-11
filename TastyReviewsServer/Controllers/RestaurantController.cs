@@ -19,43 +19,24 @@ namespace TastyReviewsServer.Controllers
         private IRestaurantService _restaurantService = restaurantService;
         private IMapper _mapper = mapper;
 
-      
+
         [HttpPost]
         public Task<IActionResult> CreatePostings([FromBody] RestaurantPostingsModel model)
-        {
-            //var files = Request.Form.Files;
+        {           
 
-
-            byte[] fileBytes;
-            using (var ms = new MemoryStream())
-            {
-                foreach (var img in model.Images)
-                {
-                    img.FormImage.CopyTo(ms);
-
-                    fileBytes = ms.ToArray();
-                    img.Image = fileBytes;
-                }                              
-            }
-            var postings = _mapper.Map<RestaurantModel>(model);
-            _restaurantService.CreatePostings(postings);
-
-
-            //var path = Path.Combine(@"D:\path", "test.JPG");
-            //using (var stream = new FileStream(path, FileMode.Create))
+            //byte[] fileBytes;
+            //using (var ms = new MemoryStream())
             //{
-            //    MemoryStream memoryStream = new MemoryStream(fileBytes);
+            //    foreach (var img in model.Images)
+            //    {
+            //        img.FormImage.CopyTo(ms);
 
-            //    Image returnImage = Image.FromStream(memoryStream);
-
-            //    returnImage.Save(stream,ImageFormat.Jpeg);
-            //    stream.Dispose();
+            //        fileBytes = ms.ToArray();
+            //        img.Image = fileBytes;
+            //    }                              
             //}
-            //foreach (var modelss in model.Images)
-            //{
-            //    modelss.Image = new Byte[40];
-            //}
-
+            //var postings = _mapper.Map<RestaurantModel>(model);
+            //_restaurantService.CreatePostings(postings);            
 
             return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
         }

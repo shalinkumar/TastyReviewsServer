@@ -21,7 +21,7 @@ namespace TastyReviewsServer.Controllers
 
         [HttpPost]
         [Route("posting-test")]
-        public Task<IActionResult> CreatePostingsTest([FromForm(Name = "image")] IFormFile image)
+        public Task<IActionResult> CreatePostingsTest(IFormFile image)
         {          
             if(image == null)
             {

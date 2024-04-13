@@ -16,6 +16,7 @@
         public DateTime CreationDate { get; set; }
         public string CreatedBy { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;
+
         public List<RestaurantImagesModelTest> Images { get; set; }
     }
 }

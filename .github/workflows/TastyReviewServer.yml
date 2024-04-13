@@ -58,10 +58,20 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: webapp
-        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}    
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        auth-type: IDENTITY
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        creds: ${{ secrets.TastyReviewsServerapi_SPN }}
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-        publish-profile: ${{ secrets.TastyReviewServer_D7FE }}        
+        publish-profile: ${{ secrets.TastyReviewServer_D7FE }}     
+    - name: logout
+      run: >
+        az logout

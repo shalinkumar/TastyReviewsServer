@@ -21,8 +21,12 @@ namespace TastyReviewsServer.Controllers
 
         [HttpPost]
         [Route("posting-test")]
-        public Task<IActionResult> CreatePostingsTest([FromForm] RestaurantImagesModelTest model)
+        public Task<IActionResult> CreatePostingsTest([FromForm(Name = "image")] IFormFile image)
         {          
+            if(image == null)
+            {
+                return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status404NotFound));
+            }
             return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
         }
 

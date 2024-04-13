@@ -67,7 +67,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-        publish-profile: ${{ secrets.API_PUBLISH_SECRET }}     
-    - name: logout
-      run: >
-        az logout
+        publish-profile: ${{ secrets.API_PUBLISH_SECRET }}         

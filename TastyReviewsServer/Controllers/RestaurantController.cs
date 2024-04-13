@@ -21,7 +21,7 @@ namespace TastyReviewsServer.Controllers
 
         [HttpPost]
         [Route("posting-test")]
-        public Task<IActionResult> CreatePostingsTest([FromForm] RestaurantPostingsModelTest model)
+        public Task<IActionResult> CreatePostingsTest([FromForm] RestaurantImagesModelTest model)
         {          
             return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
         }

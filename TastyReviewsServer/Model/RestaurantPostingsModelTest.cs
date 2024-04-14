@@ -16,6 +16,6 @@
         public DateTime CreationDate { get; set; }
         public string CreatedBy { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;       
-        public RestaurantImagesModelTest Images { get; set; }
+        public IFormFile InteriorImage { get; set; }
     }
 }

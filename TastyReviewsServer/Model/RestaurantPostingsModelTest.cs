@@ -13,7 +13,7 @@
         public string Region { get; set; } = string.Empty;
         public string PostalCode { get; set; } = string.Empty;
         public string CountryCode { get; set; } = string.Empty;
-        //public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
         public string CreatedBy { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;
         public IFormFile FormImage { get; set; }

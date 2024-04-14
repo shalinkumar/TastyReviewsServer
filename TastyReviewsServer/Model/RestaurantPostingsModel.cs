@@ -19,6 +19,6 @@
         public string LastUpdatedBy { get; set;} = string.Empty;
         public IList<IFormFile> InteriorImage { get; set; }
         public IList<IFormFile> ExteriorImage { get; set; }
-        public List<RestaurantImagesModel>? Images { get; set; } = null;
+        public List<RestaurantImagesModel>? Images { get; set; } = new List<RestaurantImagesModel>();
     }
 }

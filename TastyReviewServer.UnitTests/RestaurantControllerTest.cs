@@ -64,22 +64,24 @@ namespace TastyReviewServer.UnitTests
                     Region = "",
                     PostalCode = "H91D628",
                     CountryCode = "",
-                    CreationDate = DateTime.Now,
+                    //CreationDate = DateTime.Now,
                     CreatedBy = "Test",
                     LastUpdatedBy = "Test",
-                    Images = [new RestaurantImagesModel()
-                    {
-                        Guid = guid,
-                        IsInterior = true,
-                        //FormImage = formFiles
-                    }
+                    InteriorImage = [formFiles],
+                    ExteriorImage = [formFiles]
+                    //Images = [new RestaurantImagesModel()
+                    //{
+                    //    Guid = guid,
+                    //    IsInterior = true,
+                    //    Inter = formFiles
+                    //}
                //new RestaurantImagesModel()
                //{
                //    Guid = guid,
                //    IsInterior = true,
                //    Image = inputFile
                //}
-               ]
+               //]
                 };
 
                 //Act

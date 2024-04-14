@@ -2,7 +2,7 @@
 {
     public class RestaurantPostingsModelTest
     {
-        //public Guid Guid { get; set; }
+        public Guid Guid { get; set; }
         public string RestaurantName { get; set; } = string.Empty;
         public string Latitude { get; set; } = string.Empty;
         public string Longitude { get; set; } = string.Empty;
@@ -14,8 +14,8 @@
         public string PostalCode { get; set; } = string.Empty;
         public string CountryCode { get; set; } = string.Empty;
         //public DateTime CreationDate { get; set; }
-        //public string CreatedBy { get; set; }
-        //public string LastUpdatedBy { get; set; } = string.Empty;
+        public string CreatedBy { get; set; }
+        public string LastUpdatedBy { get; set; } = string.Empty;
         public IFormFile FormImage { get; set; }
         //public RestaurantImagesModelTest Images { get; set; }
     }

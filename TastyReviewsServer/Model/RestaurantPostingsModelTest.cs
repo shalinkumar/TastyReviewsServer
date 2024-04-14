@@ -17,5 +17,6 @@
         public string CreatedBy { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;       
         public IFormFile InteriorImage { get; set; }
+        public IFormFile ExteriorImage {get;set; }
     }
 }

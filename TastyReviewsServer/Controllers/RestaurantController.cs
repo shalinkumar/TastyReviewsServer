@@ -27,7 +27,17 @@ namespace TastyReviewsServer.Controllers
             {
                 return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status404NotFound));
             }
-            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
+
+            byte[] fileBytes;
+            using (var ms = new MemoryStream())
+            {
+
+                image.CopyTo(ms);
+
+                fileBytes = ms.ToArray();
+                
+            }
+            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK, fileBytes));
         }
 
 

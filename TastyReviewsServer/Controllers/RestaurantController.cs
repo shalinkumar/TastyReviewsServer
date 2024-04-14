@@ -21,23 +21,23 @@ namespace TastyReviewsServer.Controllers
 
         [HttpPost]
         [Route("posting-test")]
-        public Task<IActionResult> CreatePostingsTest(RestaurantPostingsModelTest model)
+        public Task<IActionResult> CreatePostingsTest(RestaurantImagesModelTest model)
         {          
-            //if(model.Images.FormImage == null)
-            //{
-            //    return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status404NotFound));
-            //}
+            if(model.FormImage == null)
+            {
+                return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status404NotFound));
+            }
 
-            //byte[] fileBytes;
-            //using (var ms = new MemoryStream())
-            //{
+            byte[] fileBytes;
+            using (var ms = new MemoryStream())
+            {
 
-            //    model.Images.FormImage.CopyTo(ms);
+                model.FormImage.CopyTo(ms);
 
-            //    fileBytes = ms.ToArray();
+                fileBytes = ms.ToArray();
                 
-            //}
-            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
+            }
+            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK, fileBytes));
         }
 
 

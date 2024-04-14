@@ -45,40 +45,40 @@ namespace TastyReviewsServer.Controllers
         public Task<IActionResult> CreatePostings(RestaurantPostingsModel model)
         {
 
-            //byte[] fileBytes;
-            //using (var ms = new MemoryStream())
-            //{
-            //    foreach (var img in model.InteriorImage)
-            //    {
-            //        img.CopyTo(ms);
+            byte[] fileBytes;
+            using (var ms = new MemoryStream())
+            {
+                foreach (var img in model.InteriorImage)
+                {
+                    img.CopyTo(ms);
 
-            //        fileBytes = ms.ToArray();
-            //        model.Images.Add(new RestaurantImagesModel
-            //        {
-            //            Image = fileBytes,
-            //            Guid = model.Guid,
-            //            IsInterior = true
-            //        });
-            //    }
+                    fileBytes = ms.ToArray();
+                    model.Images.Add(new RestaurantImagesModel
+                    {
+                        Image = fileBytes,
+                        Guid = model.Guid,
+                        IsInterior = true
+                    });
+                }
 
 
-            //    foreach (var img in model.ExteriorImage)
-            //    {
-            //        img.CopyTo(ms);
+                foreach (var img in model.ExteriorImage)
+                {
+                    img.CopyTo(ms);
 
-            //        fileBytes = ms.ToArray();
-            //        model.Images.Add(new RestaurantImagesModel
-            //        {
-            //            Image = fileBytes,
-            //            Guid = model.Guid,
-            //            IsInterior = false
-            //        });
-            //    }
-            //}
-            //var postings = _mapper.Map<RestaurantModel>(model);
-            //_restaurantService.CreatePostings(postings);
+                    fileBytes = ms.ToArray();
+                    model.Images.Add(new RestaurantImagesModel
+                    {
+                        Image = fileBytes,
+                        Guid = model.Guid,
+                        IsInterior = false
+                    });
+                }
+            }
+            var postings = _mapper.Map<RestaurantModel>(model);
+            _restaurantService.CreatePostings(postings);
 
-           
+
             return Task.FromResult<IActionResult>(base.StatusCode(StatusCodes.Status200OK));
         }
     }

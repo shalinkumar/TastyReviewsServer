@@ -21,9 +21,9 @@ namespace TastyReviewsServer.Controllers
 
         [HttpPost]
         [Route("posting-test")]
-        public Task<IActionResult> CreatePostingsTest(IFormFile image)
+        public Task<IActionResult> CreatePostingsTest(RestaurantImagesModelTest model)
         {          
-            if(image == null)
+            if(model.FormImage == null)
             {
                 return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status404NotFound));
             }
@@ -32,7 +32,7 @@ namespace TastyReviewsServer.Controllers
             using (var ms = new MemoryStream())
             {
 
-                image.CopyTo(ms);
+                model.FormImage.CopyTo(ms);
 
                 fileBytes = ms.ToArray();
                 

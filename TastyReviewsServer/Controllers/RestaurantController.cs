@@ -48,18 +48,38 @@ namespace TastyReviewsServer.Controllers
             byte[] fileBytes;
             using (var ms = new MemoryStream())
             {
-                foreach (var img in model.Images)
+                foreach (var img in model.InteriorImage)
                 {
-                    img.FormImage.CopyTo(ms);
+                    img.CopyTo(ms);
 
                     fileBytes = ms.ToArray();
-                    img.Image = fileBytes;
+                    model.Images.Add(new RestaurantImagesModel
+                    {
+                        Image = fileBytes,
+                        Guid = model.Guid,
+                        IsInterior = true
+                    });
+                }
+
+
+                foreach (var img in model.ExteriorImage)
+                {
+                    img.CopyTo(ms);
+
+                    fileBytes = ms.ToArray();
+                    model.Images.Add(new RestaurantImagesModel
+                    {
+                        Image = fileBytes,
+                        Guid = model.Guid,
+                        IsInterior = false
+                    });
                 }
             }
             var postings = _mapper.Map<RestaurantModel>(model);
             _restaurantService.CreatePostings(postings);
 
-            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
+           
+            return Task.FromResult<IActionResult>(base.StatusCode(StatusCodes.Status200OK, postings.Images.Select(x=>x.Image)));
         }
     }
 }

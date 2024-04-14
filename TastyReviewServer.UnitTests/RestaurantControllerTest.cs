@@ -71,7 +71,7 @@ namespace TastyReviewServer.UnitTests
                     {
                         Guid = guid,
                         IsInterior = true,
-                        FormImage = formFiles
+                        //FormImage = formFiles
                     }
                //new RestaurantImagesModel()
                //{

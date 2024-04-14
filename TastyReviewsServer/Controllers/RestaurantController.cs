@@ -42,7 +42,7 @@ namespace TastyReviewsServer.Controllers
 
 
         [HttpPost]
-        public Task<IActionResult> CreatePostings([FromBody] RestaurantPostingsModel model)
+        public Task<IActionResult> CreatePostings(RestaurantPostingsModel model)
         {
 
             //byte[] fileBytes;

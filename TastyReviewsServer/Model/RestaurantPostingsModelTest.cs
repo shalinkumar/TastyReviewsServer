@@ -1,11 +1,11 @@
 ﻿namespace TastyReviewsServer.Model
 {
     public class RestaurantPostingsModelTest
-    {     
+    {
         //public Guid Guid { get; set; }
-        //public string RestaurantName { get; set; } = string.Empty;
-        //public string Latitude { get; set; } = string.Empty;
-        //public string Longitude { get; set; } = string.Empty;
+        public string RestaurantName { get; set; } = string.Empty;
+        public string Latitude { get; set; } = string.Empty;
+        public string Longitude { get; set; } = string.Empty;
         //public string Country { get; set; } = string.Empty;
         //public string PhoneNumber { get; set; } = string.Empty;
         //public string Address { get; set; } = string.Empty;

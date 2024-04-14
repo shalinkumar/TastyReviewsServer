@@ -37,7 +37,7 @@ namespace TastyReviewsServer.Controllers
             //    fileBytes = ms.ToArray();
                 
             //}
-            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK, fileBytes));
+            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK));
         }
 
 

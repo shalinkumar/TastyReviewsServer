@@ -32,7 +32,7 @@ namespace TastyReviewsServer.Controllers
             using (var ms = new MemoryStream())
             {
 
-                model.InteriorImage.CopyTo(ms);
+                model.InteriorImage[0].CopyTo(ms);
 
                 fileBytes = ms.ToArray();
                 

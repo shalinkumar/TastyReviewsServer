@@ -64,11 +64,11 @@ namespace TastyReviewServer.UnitTests
                     Region = "",
                     PostalCode = "H91D628",
                     CountryCode = "",
-                    //CreationDate = DateTime.Now,
+                    CreationDate = DateTime.Now,
                     CreatedBy = "Test",
                     LastUpdatedBy = "Test",
-                    //InteriorImage = ["", ""],
-                    //ExteriorImage = ["", ""]
+                    InteriorImage = ["https://firebasestorage.googleapis.com/v0/b/tastyreviews-dbbf5.appspot.com/o/images%2F962a124c-f1e0-4310-b873-b51218928f18%2FExteriorImage%2Fa555028b-f85b-4d54-9a22-5e43f44763b0?alt=media&token=f4bed34e-3b7a-4075-9db7-5e6554a6234c", "https://firebasestorage.googleapis.com/v0/b/tastyreviews-dbbf5.appspot.com/o/images%2F962a124c-f1e0-4310-b873-b51218928f18%2FExteriorImage%2Fa555028b-f85b-4d54-9a22-5e43f44763b0?alt=media&token=f4bed34e-3b7a-4075-9db7-5e6554a6234c"],
+                    ExteriorImage = ["https://firebasestorage.googleapis.com/v0/b/tastyreviews-dbbf5.appspot.com/o/images%2F962a124c-f1e0-4310-b873-b51218928f18%2FExteriorImage%2Fa555028b-f85b-4d54-9a22-5e43f44763b0?alt=media&token=f4bed34e-3b7a-4075-9db7-5e6554a6234c", "https://firebasestorage.googleapis.com/v0/b/tastyreviews-dbbf5.appspot.com/o/images%2F962a124c-f1e0-4310-b873-b51218928f18%2FExteriorImage%2Fa555028b-f85b-4d54-9a22-5e43f44763b0?alt=media&token=f4bed34e-3b7a-4075-9db7-5e6554a6234c"]
                     //Images = [new RestaurantImagesModel()
                     //{
                     //    Guid = guid,

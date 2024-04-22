@@ -98,9 +98,9 @@ namespace Infrastructure.Migrations
                     b.Property<Guid?>("Guid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<byte[]>("Image")
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsInterior")
                         .HasColumnType("bit");

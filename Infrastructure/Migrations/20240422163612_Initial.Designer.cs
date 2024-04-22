@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240325221532_Initial")]
+    [Migration("20240422163612_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -101,9 +101,9 @@ namespace Infrastructure.Migrations
                     b.Property<Guid?>("Guid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<byte[]>("Image")
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsInterior")
                         .HasColumnType("bit");

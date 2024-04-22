@@ -190,7 +190,7 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsInterior = table.Column<bool>(type: "bit", nullable: false),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -18,29 +18,9 @@ namespace TastyReviewsServer.Controllers
     {
         private IRestaurantService _restaurantService = restaurantService;
         private IMapper _mapper = mapper;
+      
 
-        [HttpPost]
-        [Route("posting-test")]
-        public Task<IActionResult> CreatePostingsTest(RestaurantPostingsModelTest model)
-        {          
-            if(model.InteriorImage == null)
-            {
-                return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status404NotFound));
-            }
-
-            byte[] fileBytes;
-            using (var ms = new MemoryStream())
-            {
-
-                model.InteriorImage[0].CopyTo(ms);
-
-                fileBytes = ms.ToArray();
-                
-            }
-            return Task.FromResult<IActionResult>(StatusCode(StatusCodes.Status200OK, fileBytes));
-        }
-
-
+        [Authorize(Roles = UserRoles.Owner)]
         [HttpPost]
         public Task<IActionResult> CreatePostings(RestaurantPostingsModel model)
         {

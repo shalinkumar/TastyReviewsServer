@@ -17,8 +17,8 @@
         public DateTime CreationDate { get; set; }
         public string CreatedBy { get; set; } 
         public string LastUpdatedBy { get; set;} = string.Empty;
-        public IList<IFormFile> InteriorImage { get; set; }
-        public IList<IFormFile> ExteriorImage { get; set; }
+        public IList<string> InteriorImage { get; set; }
+        public IList<string> ExteriorImage { get; set; }
         public List<RestaurantImagesModel>? Images { get; set; } = new List<RestaurantImagesModel>();
     }
 }

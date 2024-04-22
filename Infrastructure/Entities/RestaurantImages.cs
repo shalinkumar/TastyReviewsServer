@@ -20,7 +20,7 @@ namespace Infrastructure.Entities
         //[Key]
         public Guid? Guid { get; set; }
         public bool IsInterior { get; set; }
-        public Byte[] Image { get; set; }
+        public string ImageUrl { get; set; }
         [NotMapped]
         public List<Byte[]> Images { get; set; }
 

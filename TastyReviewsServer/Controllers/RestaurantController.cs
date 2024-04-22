@@ -48,28 +48,22 @@ namespace TastyReviewsServer.Controllers
             byte[] fileBytes;
             using (var ms = new MemoryStream())
             {
-                foreach (var img in model.InteriorImage)
-                {
-                    img.CopyTo(ms);
-
-                    fileBytes = ms.ToArray();
+                foreach (var url in model.InteriorImage)
+                {                  
                     model.Images.Add(new RestaurantImagesModel
                     {
-                        Image = fileBytes,
+                        ImageUrl = url,
                         Guid = model.Guid,
                         IsInterior = true
                     });
                 }
 
 
-                foreach (var img in model.ExteriorImage)
-                {
-                    img.CopyTo(ms);
-
-                    fileBytes = ms.ToArray();
+                foreach (var url in model.ExteriorImage)
+                {                  
                     model.Images.Add(new RestaurantImagesModel
                     {
-                        Image = fileBytes,
+                        ImageUrl = url,
                         Guid = model.Guid,
                         IsInterior = false
                     });

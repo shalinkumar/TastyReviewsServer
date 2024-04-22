@@ -67,8 +67,8 @@ namespace TastyReviewServer.UnitTests
                     //CreationDate = DateTime.Now,
                     CreatedBy = "Test",
                     LastUpdatedBy = "Test",
-                    InteriorImage = [formFiles],
-                    ExteriorImage = [formFiles]
+                    InteriorImage = [formFiles, formFiles],
+                    ExteriorImage = [formFiles, formFiles]
                     //Images = [new RestaurantImagesModel()
                     //{
                     //    Guid = guid,

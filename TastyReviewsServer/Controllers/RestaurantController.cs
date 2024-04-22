@@ -45,31 +45,31 @@ namespace TastyReviewsServer.Controllers
         public Task<IActionResult> CreatePostings(RestaurantPostingsModel model)
         {
            
-            //using (var ms = new MemoryStream())
-            //{
-            //    foreach (var url in model.InteriorImage)
-            //    {                  
-            //        model.Images.Add(new RestaurantImagesModel
-            //        {
-            //            ImageUrl = url,
-            //            Guid = model.Guid,
-            //            IsInterior = true
-            //        });
-            //    }
+            using (var ms = new MemoryStream())
+            {
+                foreach (var url in model.InteriorImage)
+                {                  
+                    model.Images.Add(new RestaurantImagesModel
+                    {
+                        ImageUrl = url,
+                        Guid = model.Guid,
+                        IsInterior = true
+                    });
+                }
 
 
-            //    foreach (var url in model.ExteriorImage)
-            //    {                  
-            //        model.Images.Add(new RestaurantImagesModel
-            //        {
-            //            ImageUrl = url,
-            //            Guid = model.Guid,
-            //            IsInterior = false
-            //        });
-            //    }
-            //}
-            //var postings = _mapper.Map<RestaurantModel>(model);
-            //_restaurantService.CreatePostings(postings);
+                foreach (var url in model.ExteriorImage)
+                {                  
+                    model.Images.Add(new RestaurantImagesModel
+                    {
+                        ImageUrl = url,
+                        Guid = model.Guid,
+                        IsInterior = false
+                    });
+                }
+            }
+            var postings = _mapper.Map<RestaurantModel>(model);
+            _restaurantService.CreatePostings(postings);
 
 
             return Task.FromResult<IActionResult>(base.StatusCode(StatusCodes.Status200OK));

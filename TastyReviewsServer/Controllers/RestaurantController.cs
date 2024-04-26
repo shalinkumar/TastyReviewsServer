@@ -19,8 +19,7 @@ namespace TastyReviewsServer.Controllers
         private IRestaurantService _restaurantService = restaurantService;
         private IMapper _mapper = mapper;
       
-
-        [Authorize(Roles = UserRoles.Owner)]
+        
         [HttpPost]
         public Task<IActionResult> CreatePostings(RestaurantPostingsModel model)
         {

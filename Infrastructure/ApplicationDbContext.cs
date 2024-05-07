@@ -11,6 +11,8 @@ namespace Infrastructure
         public DbSet<RestaurantModel> Restaurants { get; set; }
         public DbSet<RestaurantImages> RestaurantImages { get; set; }
 
+        public DbSet<Bookings> Bookings { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
